@@ -56,7 +56,19 @@ function mount(host){
           if(!window.confirm("This application requires device: "+a.requires_device+". Localhost refers to the computer running this browser. Continue only on that device?"))event.preventDefault();
         });
       }
-      link.append(el("strong",a.title||a.app_id),el("small",a.app_id+(a.page_provider?" · "+a.page_provider:"")+(a.discovery_status==="stale"?" · stale discovery":"")+(a.requires_device?" · local device: "+a.requires_device:"")));parent.append(link);
+      link.append(el("strong",a.title||a.app_id),el("small",a.app_id+(a.page_provider?" · "+a.page_provider:"")+(a.discovery_status==="stale"?" · stale discovery":"")+(a.requires_device?" · local device: "+a.requires_device:"")));if(a.source){
+        const labels=[];
+        if(a.health_status==="stale")labels.push("Health report stale");
+        else if(a.health_status==="not_reported")labels.push("Health not reported");
+        else if(a.health_status==="reported"){
+          for(const kind of ["page","api"]){
+            const h=a.health&&a.health[kind];
+            if(h&&typeof h.status==="string")labels.push(kind.toUpperCase()+": "+h.status.replaceAll("_"," "));
+          }
+        }
+        if(labels.length)link.append(el("small",labels.join(" · ")+" (member reported)"));
+      }
+      parent.append(link);
     }
   }
   function state(ok){connected=ok;connect.hidden=ok;disconnect.hidden=!ok;refresh.disabled=!ok;search.disabled=!ok;if(!ok){apps=[];search.value="";render();}}
