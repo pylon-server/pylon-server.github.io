@@ -5,7 +5,7 @@ let apps=[],connected=false,epoch=0;
 const el=(tag,text)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e};
 function appUrl(a){
   if(typeof a.app_id!=="string"||!(/^[a-zA-Z0-9_-]+\/[a-zA-Z0-9_-]+$/).test(a.app_id)||a.url!=="/apps/"+a.app_id+"/")return null;
-  if(a.app_id==="personal/music_player")return a.url;
+  if(a.app_id==="personal/music_player"||(window.PYLON_STATIC_CATALOGS===true&&["personal/book","personal/music_catalog","personal/movie","personal/shopping","personal/youtube"].includes(a.app_id)))return a.url;
   return api.origin+a.url;
 }
 async function get(path){

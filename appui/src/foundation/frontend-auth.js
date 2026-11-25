@@ -7,8 +7,8 @@ window.PylonFrontendAuth=(()=>{
   if(!configured)return null;
   const origin=new URL(configured);
   if(origin.origin!==configured||origin.protocol!=="https:")throw Error("Invalid Pylon API origin");
-  const profile=window.PYLON_FRONTEND_PROFILE==="home"?"home":"music";
-  const BASE=origin.origin+"/_pylon/frontend/",KEY=profile==="home"?"pylon-home-pkce-v1":"pylon-static-pkce-v1";
+  const profile=["home","book","music_catalog","movie","shopping","youtube"].includes(window.PYLON_FRONTEND_PROFILE)?window.PYLON_FRONTEND_PROFILE:"music";
+  const BASE=origin.origin+"/_pylon/frontend/",KEY=profile==="music"?"pylon-static-pkce-v1":"pylon-"+profile+"-pkce-v1";
   let access=null,expires=0;
   const encode=bytes=>btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
   const random=()=>encode(crypto.getRandomValues(new Uint8Array(32)));
@@ -16,7 +16,7 @@ window.PylonFrontendAuth=(()=>{
     const verifier=random(),state=random();
     const challenge=encode(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(verifier)));
     sessionStorage.setItem(KEY,JSON.stringify({verifier,state,created:Date.now()}));
-    window.location.assign(BASE+"connect?"+new URLSearchParams(profile==="home"?{challenge,state,profile}:{challenge,state}));
+    window.location.assign(BASE+"connect?"+new URLSearchParams(profile!=="music"?{challenge,state,profile}:{challenge,state}));
   }
   async function finish(){
     const params=new URLSearchParams(location.hash.slice(1));
