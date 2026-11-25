@@ -1,0 +1,32 @@
+.fish-page { padding: 18px 22px; overflow: auto; color: var(--text-primary); }
+.fish-page > p { margin: 9px 0 14px; line-height: 1.55; }
+.fish-muted { color: var(--text-muted); font-size: 12px; }
+.fish-stats { margin: 16px 0; }
+.fish-filters .appui-toolbar-main, .fish-filters .appui-toolbar-controls { flex-wrap: wrap; }
+.fish-filters input[type="number"] { width: 150px; }
+.fish-filters input[type="search"] { min-width: 225px; }
+.fish-caveat { color: var(--text-secondary); font-size: 12px; border-left: 3px solid var(--accent); padding-left: 12px; }
+.fish-results { font-size: 13px; font-weight: 600; }
+.fish-error { color: var(--error, #df5c59); }
+.fish-table { height: auto; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.fish-table > .appui-dt-body { flex: 0 1 auto; min-height: 0; max-height: 58vh; overflow: auto; }
+.fish-table .appui-dt-row { min-height: 66px; }
+.fish-product { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fish-product img { width: 46px; height: 46px; flex-shrink: 0; object-fit: cover; border-radius: 6px; }
+.fish-product > div { min-width: 0; }
+.fish-product a { color: var(--accent); font-weight: 600; text-decoration: none; white-space: normal; }
+.fish-product a:hover { text-decoration: underline; }
+.fish-product small { display: block; margin-top: 5px; color: var(--text-muted); font-size: 11px; }
+.fish-portion-summary { white-space: pre-line; line-height: 1.6; font-size: 12px; }
+.fish-details { max-width: 1150px; padding: 8px 12px; }
+.fish-detail-intro { max-width: 850px; }
+.fish-description { white-space: pre-wrap; line-height: 1.65; }
+.fish-sizes { margin: 12px 0; border: 1px solid var(--border); }
+.fish-sizes .appui-dt-body { max-height: 300px; }
+.fish-details summary { cursor: pointer; color: var(--text-secondary); }
+.fish-comparison .appui-dt-row { min-height: 66px; }
+.fish-comparison .appui-dt-body { overflow: auto; }
+@media (max-width: 700px) {
+  .fish-page { padding: 12px; }
+  .fish-filters input[type="search"] { min-width: 160px; }
+}

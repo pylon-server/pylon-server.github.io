@@ -7,7 +7,7 @@ window.PylonFrontendAuth=(()=>{
   if(!configured)return null;
   const origin=new URL(configured);
   if(origin.origin!==configured||origin.protocol!=="https:")throw Error("Invalid Pylon API origin");
-  const profile=["home","book","music_catalog","movie","shopping","youtube"].includes(window.PYLON_FRONTEND_PROFILE)?window.PYLON_FRONTEND_PROFILE:"music";
+  const profile=["home","book","music_catalog","movie","shopping","youtube","travel_video","fish"].includes(window.PYLON_FRONTEND_PROFILE)?window.PYLON_FRONTEND_PROFILE:"music";
   const BASE=origin.origin+"/_pylon/frontend/",KEY=profile==="music"?"pylon-static-pkce-v1":"pylon-"+profile+"-pkce-v1";
   let access=null,expires=0;
   const encode=bytes=>btoa(String.fromCharCode(...new Uint8Array(bytes))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
