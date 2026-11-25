@@ -1,0 +1,285 @@
+/* ==========================================================================
+   pylon-server shared theme
+   Light-first theme CSS custom properties and utility classes.
+   Usage: loaded via AppUIAssets.loadCss() from /appui/manifest.js
+   ========================================================================== */
+
+:root {
+  /* --- Colors: Backgrounds --- */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-elevated: #ffffff;
+  --bg-hover: #eee;
+  --bg-active: #e0e0e0;
+
+  /* --- Colors: Text --- */
+  --text-primary: #1a1a1a;
+  --text-secondary: #555;
+  --text-muted: #888;
+  --text-inverse: #fff;
+
+  /* --- Colors: Accent --- */
+  --accent: #4a56e2;
+  --accent-hover: #3d48c9;
+  --accent-muted: rgba(74, 86, 226, 0.1);
+
+  /* --- Colors: Borders --- */
+  --border: #ddd;
+  --border-light: #eee;
+  --border-focus: #4a56e2;
+
+  /* --- Colors: Status --- */
+  --color-success: #2e7d32;
+  --color-error: #c62828;
+  --color-warning: #e65100;
+  --color-info: #1565c0;
+
+  /* --- Font --- */
+  --font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Cascadia Code', 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-xs: 11px;
+  --font-sm: 12px;
+  --font-base: 13px;
+  --font-md: 14px;
+  --font-lg: 16px;
+  --font-xl: 20px;
+
+  /* --- Spacing --- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+
+  /* --- Border Radius --- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb: #bbb;
+  --scrollbar-thumb-hover: #999;
+
+  /* --- Layout --- */
+  --sidebar-left: 280px;
+  --sidebar-right: 350px;
+
+  /* --- Transitions --- */
+  --transition-fast: 0.1s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* --- Aliases (legacy / shorthand) --- */
+  --fg: var(--text-primary);
+  --fg-dim: var(--text-muted);
+  --surface: var(--bg-elevated);
+  --input-bg: var(--bg-primary);
+  --hover: var(--bg-hover);
+  --bg-tertiary: var(--bg-elevated);
+}
+
+/* Dark theme override */
+[data-theme="dark"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #1e1e2e;
+  --bg-elevated: #252535;
+  --bg-hover: #2a2a3e;
+  --bg-active: #303048;
+
+  --text-primary: #ddd;
+  --text-secondary: #aaa;
+  --text-muted: #888;
+  --text-inverse: #1a1a2e;
+
+  --accent: #6c63ff;
+  --accent-hover: #7b73ff;
+  --accent-muted: rgba(108, 99, 255, 0.15);
+
+  --border: #333;
+  --border-light: #444;
+  --border-focus: #6c63ff;
+
+  --color-success: #4caf50;
+  --color-error: #f44336;
+  --color-warning: #ff9800;
+  --color-info: #2196f3;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --scrollbar-thumb: #444;
+  --scrollbar-thumb-hover: #555;
+
+  /* --- Aliases (legacy / shorthand) --- */
+  --fg: var(--text-primary);
+  --fg-dim: var(--text-muted);
+  --surface: var(--bg-elevated);
+  --input-bg: var(--bg-primary);
+  --hover: var(--bg-hover);
+  --bg-tertiary: var(--bg-elevated);
+}
+
+/* ==========================================================================
+   Base resets (optional  --  won't conflict if page has its own)
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Scrollbar styling
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--bg-primary);
+}
+
+/* ==========================================================================
+   Utility classes
+   ========================================================================== */
+
+/* --- Panel --- */
+.panel {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-light);
+}
+
+.btn:active {
+  background: var(--bg-active);
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.btn-danger {
+  background: var(--color-error);
+  border-color: var(--color-error);
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #e53935;
+  border-color: #e53935;
+}
+
+/* --- Input --- */
+.input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-family);
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.input:focus {
+  border-color: var(--border-focus);
+}
+
+.input::placeholder {
+  color: var(--text-muted);
+}
+
+/* --- Badge --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--space-sm);
+  font-size: var(--font-xs);
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.badge-success {
+  background: rgba(76, 175, 80, 0.15);
+  color: var(--color-success);
+}
+
+.badge-error {
+  background: rgba(244, 67, 54, 0.15);
+  color: var(--color-error);
+}
+
+.badge-warning {
+  background: rgba(255, 152, 0, 0.15);
+  color: var(--color-warning);
+}
+
+.badge-info {
+  background: rgba(33, 150, 243, 0.15);
+  color: var(--color-info);
+}
+
+/* --- Truncate --- */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

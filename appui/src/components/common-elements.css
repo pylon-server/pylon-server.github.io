@@ -1,0 +1,44 @@
+/* AppUI Common Elements — reusable classes for page content. */
+
+/* Sidebar list items */
+.appui-list-item{padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm,4px);margin:2px 0}
+.appui-list-item:hover,.appui-list-item.active{background:var(--bg-hover)}
+.appui-list-item .appui-list-title{font-weight:600}
+.appui-list-item .appui-list-subtitle{font-size:var(--font-xs,11px);color:var(--text-muted)}
+.appui-list-item .appui-list-action{float:right;cursor:pointer;opacity:.5;font-size:var(--font-xs,11px)}
+.appui-list-item .appui-list-action:hover{opacity:1}
+
+/* Tree nodes */
+.appui-tree-node{margin-left:var(--space-lg,16px)}
+.appui-tree-node>.appui-tree-label{padding:3px 6px;cursor:pointer;border-radius:var(--radius-sm,3px)}
+.appui-tree-node>.appui-tree-label:hover{background:var(--bg-hover)}
+.appui-tree-node>.appui-tree-label.selected{background:var(--accent);color:var(--text-inverse,#fff)}
+.appui-tree-children{display:none}
+.appui-tree-children.open{display:block}
+
+/* Sidebar forms */
+.appui-sidebar-form{margin-top:var(--space-md,12px);padding-top:10px;border-top:1px solid var(--border)}
+.appui-sidebar-form label{display:block;font-size:var(--font-xs,11px);color:var(--text-muted);margin:6px 0 2px}
+.appui-sidebar-form input,.appui-sidebar-form select,.appui-sidebar-form textarea{width:100%;box-sizing:border-box;padding:4px 6px;border:1px solid var(--border-light,var(--border));background:var(--bg-primary);color:var(--text-primary);border-radius:var(--radius-sm,3px);font-size:var(--font-sm,12px);font-family:inherit}
+.appui-btn{display:inline-block;padding:6px 12px;border:none;background:var(--accent);color:var(--text-inverse,#fff);border-radius:var(--radius-sm,4px);cursor:pointer;font-size:var(--font-sm,12px);font-family:inherit}
+.appui-btn:hover{opacity:.85}
+.appui-btn.secondary{background:var(--accent-hover,var(--accent))}
+.appui-btn-block{width:100%;margin-top:8px}
+
+/* Badges */
+.appui-badge{display:inline-block;padding:1px 6px;border-radius:3px;font-size:var(--font-xs,11px);background:var(--accent);color:var(--text-inverse,#fff)}
+.appui-badge.muted{background:transparent;color:var(--text-muted)}
+.appui-badge.warning{background:transparent;color:var(--color-warning)}
+.appui-badge.error{background:transparent;color:var(--color-error)}
+
+/* Detail panels */
+.appui-detail-panel h4{margin:0 0 8px;font-size:var(--font-md,14px)}
+.appui-detail-table{width:100%;border-collapse:collapse;font-size:var(--font-sm,12px)}
+.appui-detail-table td{padding:3px 6px;border-bottom:1px solid var(--border)}
+.appui-detail-table td:first-child{color:var(--text-muted);white-space:nowrap}
+.appui-detail-pre{white-space:pre-wrap;word-break:break-word;font-size:var(--font-sm,12px);font-family:var(--font-mono,monospace);background:var(--bg-elevated);padding:8px;border-radius:var(--radius-sm,4px);max-height:400px;overflow-y:auto;margin:0}
+
+/* Utility */
+.appui-empty{color:var(--text-muted);padding:20px;text-align:center}
+.appui-url{font-size:var(--font-xs,11px);color:var(--text-muted);word-break:break-all;margin-bottom:6px}
+.appui-section-header{font-size:var(--font-sm,12px);font-weight:600;margin:10px 0 4px}
